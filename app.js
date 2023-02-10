@@ -65,6 +65,8 @@ app.get('/users/:email', (req, res) => {
 });
 
 app.get('/swim_workouts', (req, res) => {
+  // clear CORS error for now, allow all to connect
+  res.set('Access-Control-Allow-Origin', '*');
   sqlConnection.connect((err) => {
     if(err){
       console.log('Error connecting to Db');
@@ -83,7 +85,7 @@ app.get('/swim_workouts', (req, res) => {
     // rows.forEach( (row) => {
     //   console.log(`User with ID of ${row.user_id} has first name of ${row.first_name}`)
     // });
-    res.send(rows);
+    res.send(rows[0].type);
   });
   // sqlConnection.end((err) => {
     // The connection is terminated gracefully

@@ -4,16 +4,30 @@ import axios from 'axios';
 import { useState } from 'react';
 
 const GetWorkoutsForm = () => {
-  const [workouts, setWorkouts] = useState('no workouts yet');
+  const [workouts, setWorkouts] = useState('no workout yet');
   
-  const handleSubmit = async (event) => {
-    // console.log('handlesubmit');
+  const handleSubmit = async () => {
+    console.log('handlesubmit');
     const response = await axios.get('http://localhost:3001/swim_workouts');
-    const data = await response.json();
-    setWorkouts(data);
+    const data = await response;
+    console.log('data: ', data.data);
+    setWorkouts(data.data);
     //setWorkouts('got workouts');
     // console.log(response.data);
   }
+
+  // const handleSubmit = () => {
+  //   console.log('handlesubmit');
+  //   axios.get('http://localhost:3001/swim_workouts')
+  //     .then(response => {
+  //       return response.data
+  //     })
+  //     .then(data => {
+  //       setWorkouts(data)
+  //     })
+  //   //setWorkouts('got workouts');
+  //   // console.log(response.data);
+  // }
 
   return (
     <div>
