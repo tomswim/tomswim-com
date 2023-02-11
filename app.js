@@ -85,7 +85,7 @@ app.get('/swim_workouts', (req, res) => {
     // rows.forEach( (row) => {
     //   console.log(`User with ID of ${row.user_id} has first name of ${row.first_name}`)
     // });
-    res.send(rows[0].type);
+    res.send(rows);
   });
   // sqlConnection.end((err) => {
     // The connection is terminated gracefully

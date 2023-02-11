@@ -4,15 +4,19 @@ import axios from 'axios';
 import { useState } from 'react';
 
 const GetWorkoutsForm = () => {
-  const [workouts, setWorkouts] = useState('no workout yet');
-  
-  const handleSubmit = async () => {
+  const [workouts, setWorkouts] = useState('no workouts yet');
+  // console.log({test1: "test1"});
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     console.log('handlesubmit');
     const response = await axios.get('http://localhost:3001/swim_workouts');
-    const data = await response;
-    console.log('data: ', data.data);
-    setWorkouts(data.data);
-    //setWorkouts('got workouts');
+    console.log(response);
+    const workouts = response.data;
+    // console.log({test2: "test2"});
+    // console.log('response: ',{workouts});
+    // console.log('data: ', workouts);
+    setWorkouts(JSON.stringify(workouts));
+    // setWorkouts('got workouts');
     // console.log(response.data);
   }
 
@@ -31,13 +35,14 @@ const GetWorkoutsForm = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}> */}
+      <form>
         <input
           type="text"
           placeholder="Get all workouts"
           // value='Get all workouts'
         />
-        <button>Get workouts</button>
+        <button onClick={handleSubmit}>Get workouts</button>
       </form>
       <div>
         {workouts}
@@ -47,7 +52,7 @@ const GetWorkoutsForm = () => {
 }
 
 function App() {
-  
+  console.log({test3: "test3"});
   return (
     <div className="App">
       {/* <header className="App-header">
@@ -70,3 +75,4 @@ function App() {
 }
 
 export default App;
+
