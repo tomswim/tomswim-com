@@ -15,7 +15,7 @@ import Set from "./Set";
 
 const Sets = (props) => (
     <div className="sets">
-      {props.sets.map(set => <Set key={set.setNumber} {...set}/>)}
+      {props.sets.map(set => <Set key={set.set_number} {...set}/>)}
     </div>
 );
 

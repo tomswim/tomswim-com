@@ -11,7 +11,7 @@ const Set = (props) => {
     <div className="set">
       <div className="set_number">
         <label>Set: </label>
-        {set.setNumber}
+        {set.set_number}
       </div>
       <div className="stroke">
         <label>Stroke: </label>
